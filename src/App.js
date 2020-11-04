@@ -10,7 +10,13 @@ import HomeButton from './components/HomeButton'
 import { Route, Switch } from "react-router-dom";
 import {withRouter} from 'react-router-dom'
 
+import firebase from 'firebase/app';
+
 class App extends Component {
+
+  state = {
+    price: 100
+  }
 
 
   foodArr = [
@@ -47,6 +53,16 @@ class App extends Component {
       return <FoodNotFound/>
     }
   }
+
+  componentDidMount() {
+    // const rootRef = firebase.database().ref().child('jojo-s-online-coffee-shop')
+    // const priceRef = rootRef.child("price")
+    // priceRef.on('value', snap => {
+    //   this.setState({
+    //     price: snap.val()
+    //   })
+    // })
+  }
   
 
   render() {
@@ -57,6 +73,7 @@ class App extends Component {
     return (
       <div>
         Welcome to Jojo's Coffee Online Shop
+        {this.state.price}
         <HomeButton/>
         <Switch>
           <Route path="/about_us">
